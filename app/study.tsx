@@ -5,6 +5,7 @@ import UserInfoCard from "@/components/UserInfoCard";
 
 export default function StudyScreen() {
   return <View style={styles.container}>
+    <Text>This is Study Page!</Text>
     <UserInfoCard />
     <BottomNavBar />
   </View>
