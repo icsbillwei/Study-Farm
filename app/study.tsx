@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
 
   btnTextMain: {
     fontSize: 20,
-    color: 'FFF0BA',
     marginRight: 0,
     fontFamily: 'Handjet-Medium',
   },
