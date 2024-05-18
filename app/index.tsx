@@ -1,6 +1,8 @@
 import { Text, View } from "react-native";
 import { useFonts } from 'expo-font';
 import EntranceScreen from "../pages/EntranceScreen";
+import TimelineView from "@/components/TimelineView";
+import SetTimelinePage from "@/pages/SetTimelinePage";
 
 export default function Index() {
   const [fontsLoaded] = useFonts({
@@ -29,6 +31,8 @@ export default function Index() {
       }}
     >
       <EntranceScreen />
+      {/* <TimelineView /> */}
+      {/* <SetTimelinePage /> */}
     </View>
   );
 }
