@@ -8,7 +8,6 @@ import {backgroundImage} from './_layout';
 export default function StudyScreen() {
   return <ImageBackground source={backgroundImage}>
     <View style={styles.container}>
-      <Text >This is Study Page!</Text>
       <UserInfoCard />
 
       <View style={{ height: 20 }} />
