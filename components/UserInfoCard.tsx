@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
     width: 250,
     height: 125,
     paddingHorizontal: 20,
-    
   },
  
   level: {
@@ -42,11 +41,16 @@ const styles = StyleSheet.create({
   avatar: {
     display: "flex",
     alignItems: "center",
+    justifyContent:'space-between',
+    flex:1,
   },
 
   profile: {
     display: 'flex',
     flexDirection: 'row',
+    flex:1,
+    justifyContent:'space-between',
+    alignItems: 'flex-start',
   },
   name: {
     fontFamily: "Handjet-Medium",
