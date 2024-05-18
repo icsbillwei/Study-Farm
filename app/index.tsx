@@ -2,7 +2,7 @@ import { ImageBackground, Text, View } from "react-native";
 import { useFonts } from 'expo-font';
 import EntranceScreen from "../pages/EntranceScreen";
 import TimelineView from "@/app/study/timeline";
-import SetTimelinePage from "@/pages/SetTimelinePage";
+// import SetTimelinePage from "../../pages/SetTimelinePage";
 
 import { Image } from 'react-native';
 import { useEffect } from "react";

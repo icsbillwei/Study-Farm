@@ -1,23 +1,67 @@
 import BottomNavBar from "@/components/Navbar";
 import { colors } from "@/assets/color";
 import { Link } from "expo-router";
-import { View, Text, StyleSheet, ImageBackground, } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, ScrollView } from "react-native";
 import UserInfoCard from "@/components/UserInfoCard";
-import {backgroundImage} from './_layout';
 
 export default function StudyScreen() {
-  return <ImageBackground source={backgroundImage}>
+
+  const line1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit,a pariatur.";
+  const line2 = "a pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit,";
+  const line3 = "lorem ipsum dolor sit amet, consectetur adipiscing elit, a pariatur. lorem lorem lorem ipsum asdasdas fish TOUCH FISH";
+
+  
+
+  return <ImageBackground source={require('../assets/images/farm.png') }>
     <View style={styles.container}>
       <UserInfoCard />
 
       <View style={{ height: 20 }} />
 
       <Link href="study/timeline">
-        <View style={styles.btn} >
+        <View style={styles.btnShit} >
           <Text style={styles.btnText}>Timeline</Text>
           <View style={styles.arrow} />
         </View>
       </Link>
+
+      <View style={{ height: 10 }} />
+
+      <Link href="study/timelinesetting">
+        <View style={[styles.btnShit, styles.btnShit2]} >
+          <Text style={[styles.btnText, styles.btnText2]}>Timeline Settings</Text>
+          <View style={styles.arrow} />
+        </View>
+      </Link>
+
+      <View style={{ height: 20 }} />
+
+      <View style={[styles.btnShit, styles.btnShit3]} >
+        <Text style={[styles.btnText, styles.btnText3]}>Daily Mission</Text>
+        <Text style={[styles.btnText, styles.btnText4]}>Items ranked based on priority</Text>
+
+        <View style={{ height: 5 }} />
+        <ScrollView>
+          
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={styles.star}>⭐⭐⭐</Text>
+            <Text style={[styles.btnText, styles.btnTextMain]}>{line1}</Text>
+        </View>
+
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={styles.star}>⭐⭐     </Text>
+            <Text style={[styles.btnText, styles.btnTextMain]}>{line2}</Text>
+        </View>
+
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={styles.star}>⭐          </Text>
+            <Text style={[styles.btnText, styles.btnTextMain]}>{line3}</Text>
+        </View>
+         
+        </ScrollView>
+      </View>
+
+      
 
       <BottomNavBar />
     </View>
@@ -35,14 +79,14 @@ const styles = StyleSheet.create({
     width: "100%"
   },
 
-  btn: {
+  btnShit: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#C1A570', // Color from the image
-    paddingHorizontal: 30,
+    backgroundColor: '#C1A570', 
+    paddingHorizontal: 20,
     borderRadius: 5,
     width: 300,
-    height: 100,
+    height: 80,
     elevation: 5,
 
     shadowColor: '#000',
@@ -51,14 +95,55 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
   },
 
+  btnShit2: {
+    backgroundColor: '#C0C276', 
+    height: 60,
+  },
+
+  btnShit3: {
+    backgroundColor: 'rgba(149, 172, 112, 1)', 
+    height: 320,
+    paddingTop: 10,
+    paddingBottom: 20,
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+  },
+
   btnText: {
     fontFamily: 'Handjet-Bold', // Ensure this matches the font file name
-    fontSize: 34,
+    fontSize: 32,
     color: colors.text,
+    marginRight: 150,
+  },
+
+  btnText2: {
+    fontSize: 26,
+    marginRight: 82,
+  },
+
+  btnText3: {
+    fontSize: 32,
+    marginRight: 0,
+    marginBottom: -10
+  },
+
+  btnText4: {
+    fontSize: 16,
+    marginRight: 0,
+  },
+
+  btnTextMain: {
+    fontSize: 20,
+    marginRight: 0,
+    fontFamily: 'Handjet-Medium',
+  },
+
+  star: {
+    fontSize: 16,
+    marginRight: 10,
   },
 
   arrow: {
-    marginLeft: 130,
     width: 0,
     height: 0,
     borderTopWidth: 12,
