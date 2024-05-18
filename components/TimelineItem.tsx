@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginVertical: 6,
-        marginHorizontal: 30
+        marginHorizontal: 20
     },
 
     container: {
