@@ -7,7 +7,6 @@ import UserInfoCard from "@/components/UserInfoCard";
 export default function StudyScreen() {
   return <ImageBackground source={require('../assets/images/farm.png')}>
     <View style={styles.container}>
-      <Text >This is Study Page!</Text>
       <UserInfoCard />
 
       <View style={{ height: 20 }} /> 
