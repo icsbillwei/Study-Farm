@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     color: "#333",
-    fontSize: 12,
+    fontSize: 16,
+    fontFamily: "Handjet-Medium",
   },
 });
 
