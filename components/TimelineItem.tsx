@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
 import TimelineObject from './TimelineSchema';
+import { colors } from '@/assets/color';
 
 const low: number = 10;
 const med: number = 25;
@@ -71,9 +72,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         width: 200,
         margin: 0,
-        shadowColor: '#000',
+        shadowColor: colors.textGrey,
         shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.9,
+        shadowOpacity: 0.3,
         shadowRadius: 2,
         elevation: 6,
         justifyContent: 'center',

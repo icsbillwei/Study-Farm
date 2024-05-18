@@ -1,8 +1,27 @@
-import { Text, View } from "react-native";
+import { ImageBackground, Text, View } from "react-native";
 import { useFonts } from 'expo-font';
 import EntranceScreen from "../pages/EntranceScreen";
-import TimelineView from "@/components/TimelineView";
+import TimelineView from "@/app/study/timeline";
 import SetTimelinePage from "@/pages/SetTimelinePage";
+
+import { Image } from 'react-native';
+import { useEffect } from "react";
+
+// const images = [
+//   require('../assets/images/farm.png'),
+//   // add farm 2 png
+// ];
+
+// const cacheImages = (images: Array<string>): Array<Promise<boolean>> => {
+//   return images.map((image: string) => {
+//     return Image.prefetch(image);
+//   });
+// };
+
+// const preloadImages = async () => {
+//   const imageAssets = cacheImages(images);
+//   await Promise.all([...imageAssets]);
+// };
 
 export default function Index() {
   const [fontsLoaded] = useFonts({
@@ -18,22 +37,35 @@ export default function Index() {
 
   });
 
+  // useEffect(() => {
+  //   const loadResources = async () => {
+  //     try {
+  //       const imageAssets = cacheImages(images);
+  //       await Promise.all([...imageAssets]);
+  //     } catch (error) {
+  //       console.warn('Error loading images:', error);
+  //     }
+  //   };
+
+  //   loadResources();
+  // }, []);
+
   if (!fontsLoaded) {
     return <View></View>;
   }
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <EntranceScreen />
-      {/* <TimelineView /> */}
-      {/* <SetTimelinePage /> */}
-    </View>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <EntranceScreen />
+        {/* <TimelineView /> */}
+        {/* <SetTimelinePage /> */}
+      </View>
   );
 }
 

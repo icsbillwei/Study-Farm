@@ -3,19 +3,22 @@ import { colors } from "@/assets/color";
 import { Link } from "expo-router";
 import { View, Text, StyleSheet, ImageBackground, } from "react-native";
 import UserInfoCard from "@/components/UserInfoCard";
+import {backgroundImage} from './_layout';
 
 export default function StudyScreen() {
-  return <ImageBackground source={require('../assets/images/farm.png')}>
+  return <ImageBackground source={backgroundImage}>
     <View style={styles.container}>
       <Text >This is Study Page!</Text>
       <UserInfoCard />
 
-      <View style={{ height: 20 }} /> 
+      <View style={{ height: 20 }} />
 
-      <View style={styles.btn} >
-        <Text style={styles.btnText}>Timeline</Text>
-        <View style={styles.arrow} />
-      </View>
+      <Link href="study/timeline">
+        <View style={styles.btn} >
+          <Text style={styles.btnText}>Timeline</Text>
+          <View style={styles.arrow} />
+        </View>
+      </Link>
 
       <BottomNavBar />
     </View>
@@ -25,7 +28,7 @@ export default function StudyScreen() {
 const styles = StyleSheet.create({
 
   container: {
-    display:'flex',
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingTop: 80,
@@ -42,6 +45,11 @@ const styles = StyleSheet.create({
     width: 300,
     height: 100,
     elevation: 5,
+
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
   },
 
   btnText: {
