@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { ScrollView, TouchableOpacity, TextInput, View, Text, StyleSheet, SafeAreaView, ImageBackground, Image } from 'react-native';
 import { Button } from 'react-native-elements';
-import TimelineObject from '@/components/TimelineSchema';
-import TimelineItem from '../components/TimelineItem';
-import { colors } from '../assets/color';
-import { useFonts } from 'expo-font';
+import TimelineObject from '../../components/TimelineSchema';
+import TimelineItem from '../../components/TimelineItem';
+import { colors } from '../../assets/color';
+import { useRouter } from 'expo-router';
 
 
 export default function SetTimelinePage() {
@@ -26,7 +26,6 @@ export default function SetTimelinePage() {
       percentage: percentage,
       dueDate: new Date(new Date().getFullYear(), month - 1, day) // month is 0-indexed    
     };
-
     setTasks([...tasks, newTask]);
 
     // Clear the input fields
@@ -34,20 +33,26 @@ export default function SetTimelinePage() {
     setTaskPercent(0);
     setMonth(0);
     setDay(1);
-    
   };
+
+  const router = useRouter();
+
+    const handleDismiss = () => {
+      router.dismiss();
+    };
+
 
   const onDone = () => {
 
   }
 
   return (
-    <ImageBackground source={require('../assets/images/farm.png')} style={styles.background}>
+    <ImageBackground source={require('../../assets/images/farm.png')} style={styles.background}>
         <SafeAreaView style={styles.container}>
 
         <View style={styles.titleRow}>
-          <TouchableOpacity>
-            <Image source={require('../assets/images/pixel-arrow.png')} style={styles.backButton} />
+          <TouchableOpacity onPress={() => handleDismiss()}>
+            <Image source={require('../../assets/images/pixel-arrow.png')} style={styles.backButton} />
           </TouchableOpacity>
           <Text style={styles.title}>Add Class</Text>
           <Button
@@ -155,7 +160,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    backgroundColor: 'rgba(95, 99, 79, 0.80)',
+    backgroundColor: 'rgba(95, 99, 79, 0.2)',
     height: '90%',
     width: '90%',
     paddingHorizontal: 30,

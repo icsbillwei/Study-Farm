@@ -4,7 +4,6 @@ import TimelineObject from '../../components/TimelineSchema';
 import TimelineItem from '../../components/TimelineItem';
 import { colors } from '@/assets/color';
 import { useRouter } from 'expo-router';
-import {backgroundImage} from '../../app/_layout';
 
 const TimelineView = () => {
   const router = useRouter();
@@ -21,7 +20,7 @@ const TimelineView = () => {
 
   return (
     <ImageBackground
-      source={backgroundImage} 
+      source={require('../../assets/images/farm.png')} 
       style={styles.background}
     >
 
@@ -75,7 +74,7 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    backgroundColor: 'rgba(95, 99, 79, 0.1)',
+    backgroundColor: 'rgba(95, 99, 79, 0.2)',
     marginVertical: 50,
     paddingVertical: 30,
     shadowColor: '#000',
