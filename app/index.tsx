@@ -30,9 +30,9 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      {/* <EntranceScreen /> */}
+      <EntranceScreen />
       {/* <TimelineView /> */}
-      <SetTimelinePage />
+      {/* <SetTimelinePage /> */}
     </View>
   );
 }
