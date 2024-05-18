@@ -1,6 +1,6 @@
 interface TimelineObject {
     id: number;
-    username: string;
+    name: string;
     percentage: number;
     dueDate: Date;
 }

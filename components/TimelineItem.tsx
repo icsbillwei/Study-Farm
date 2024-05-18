@@ -46,7 +46,7 @@ const TimelineItem = ({ item }: TimelineItemProps) => {
     return(
         <View style={styles.itemContainer}>
             <View style={[styles.container, getStyle()]}>
-                <Text style={styles.title}>{item.username}</Text>
+                <Text style={styles.title}>{item.name}</Text>
                 <Text style={styles.weighting}>{item.percentage}%</Text>
             </View>
             <Text style={[styles.date, getDateStyle()]}>{getDateText()}</Text>
@@ -61,12 +61,13 @@ const styles = StyleSheet.create({
     itemContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginVertical: 8,
-        marginHorizontal: 40
+        marginVertical: 6,
+        marginHorizontal: 30
     },
 
     container: {
         marginRight: 20,
+        marginLeft: 10,
         paddingHorizontal: 20,
         width: 200,
         margin: 0,
@@ -76,39 +77,40 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 6,
         justifyContent: 'center',
-        alignItems: "center"
+        alignItems: "center",
+        borderRadius: 5
     },
 
     lowWeighting: {
-        height: 70,
-        backgroundColor: '#78cc9f'
+        height: 80,
+        backgroundColor: 'rgba(163, 215, 187, 1)'
     },
 
     mediumWeighting: {
-        height: 90,
-        backgroundColor: '#9789cd'
+        height: 100,
+        backgroundColor: 'rgba(174, 163, 214, 1)'
     },
 
     highWeighting: {
-        height: 100,
-        backgroundColor: '#d34d4d'
+        height: 130,
+        backgroundColor: 'rgba(215, 106, 106, 1)'
     },
 
     title: {
-        fontSize: 19,
-        fontFamily: 'Epilogue-700',
+        fontSize: 24,
+        fontFamily: 'Handjet-Bold',
         color: 'white'
     },
 
     weighting: {
-        fontSize: 15,
-        fontFamily: 'Epilogue-700',
+        fontSize: 20,
+        fontFamily: 'Handjet-Bold',
         color: 'white'
     },
 
     date: {
-        fontSize: 16,
-        fontFamily: 'Epilogue-700',
+        fontSize: 24,
+        fontFamily: 'Handjet-Medium',
         color: 'white'
     },
 
