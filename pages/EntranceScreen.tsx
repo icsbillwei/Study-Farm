@@ -1,8 +1,10 @@
+import { Link, useNavigation } from "expo-router";
 import { useEffect, useRef } from "react";
 import { Animated, View, Text, ImageBackground, StyleSheet, Image} from "react-native";
 import { TouchableOpacity } from "react-native";
 
 export default function EntranceScreen() {
+  const navigation = useNavigation();
   const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
 
   useEffect(() => {
@@ -21,9 +23,9 @@ export default function EntranceScreen() {
       <View style={styles.container}>
         <Image source={require('../assets/images/geese-logo.png')} />
         <Animated.Text style={{...styles.title, opacity: fadeAnim}}>Study Farm</Animated.Text>
-        <TouchableOpacity style={styles.button}>
+        <Link href="/study" style={styles.button}>
           <Text style={styles.buttonText}>Enter</Text>
-        </TouchableOpacity>
+        </Link>
       </View>
     </ImageBackground>
   );
