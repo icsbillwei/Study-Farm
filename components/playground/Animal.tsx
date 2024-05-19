@@ -8,6 +8,7 @@ import {
   Modal,
   TextInput,
   StyleSheet,
+  ImageBackground,
 } from "react-native";
 import { Button } from "react-native-elements";
 import { colors } from "@/assets/color";
@@ -66,6 +67,8 @@ const NPC: React.FC<NPCProps> = ({
         ...styles.container,
       }}
     >
+      
+
       <TouchableOpacity onPress={handleAnimalClick}>
         <View style={{ alignItems: "center" }}>
           <Text
@@ -103,6 +106,9 @@ const NPC: React.FC<NPCProps> = ({
               borderRadius: 10,
             }}
           >
+            <TouchableOpacity onPress={handleGoBack} >
+              <Image source={require('../../assets/images/pixel-arrow-black.png')} style={styles.backButton}  />
+            </TouchableOpacity >
             <Image source={iconUrl} height={300} width={300}></Image>
             <View
               style={{
@@ -129,30 +135,21 @@ const NPC: React.FC<NPCProps> = ({
             <View style={{ height: 10 }} />
 
             {/* prompt is here */}
-            <View
-              style={{
-                padding: 12,
-                backgroundColor: colors.backgroundGreen,
-                borderRadius: 10,
-                shadowColor: "black",
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.3,
-              }}
-            >
+            <ImageBackground source={require('../../assets/images/woodboard-long.png')} style={styles.woodboard} imageStyle={{ borderRadius: 10}}>
               <Text
                 style={{
                   fontFamily: "Handjet-Bold",
                   color: "white",
-                  fontSize: 14,
+                  fontSize: 16,
                 }}
               >
                 {name} says:
               </Text>
               <View style={{ height: 10 }} />
-              <Text style={{ fontFamily: "Handjet-Regular", color: "white" }}>
+              <Text style={{ fontFamily: "Handjet-Medium", color: "white" }}>
                 adsad adasduad as da sa sda sd asd sd asd dsa ads asd ads adsad{" "}
               </Text>
-            </View>
+            </ImageBackground>
 
             <View style={{ height: 10 }} />
 
@@ -165,10 +162,9 @@ const NPC: React.FC<NPCProps> = ({
                 fontFamily: "Handjet-Regular",
                 fontSize: 16,
                 padding: 10,
-                margin: 10,
+                margin: 5,
                 borderRadius: 5,
                 height: 50,
-                width: 300,
                 color: "black",
               }}
             />
@@ -176,9 +172,9 @@ const NPC: React.FC<NPCProps> = ({
             <Text onPress={handleChatSubmit} style={styles.button}>
               Ask {name}
             </Text>
-            <Text onPress={handleGoBack} style={styles.button}>
+            {/* <Text onPress={handleGoBack} style={styles.button}>
               Say Bye!
-            </Text>
+            </Text> */}
 
             <View style={{ height: 40 }} />
           </View>
@@ -191,6 +187,21 @@ const NPC: React.FC<NPCProps> = ({
 export default NPC;
 
 const styles = StyleSheet.create({
+  woodboard: {
+    paddingHorizontal: 15,
+    paddingVertical: 20,
+    objectFit: "cover",
+    marginBottom: 30,
+  },
+
+  backButton: {
+    width: 40,
+    height: 40,
+    marginBottom: 10,
+    marginLeft: 10,
+    marginRight: 0,
+  },
+
   container: {
     fontFamily: "Handjet-Regular",
   },
@@ -207,7 +218,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     marginTop: 10,
-    marginHorizontal: 50,
+    marginHorizontal: 100,
+    borderRadius: 5,
     // Shadow for iOS
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
