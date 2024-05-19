@@ -113,8 +113,8 @@ const styles = StyleSheet.create({
 
     weighting: {
         fontSize: 20,
-        fontFamily: 'Handjet-Regular',
-        color: 'black'
+        fontFamily: 'Handjet-Bold',
+        color: 'white'
     },
 
     date: {

@@ -127,7 +127,7 @@ export default function SetTimelinePage() {
           <View>
           <Button
               title='Import from Calendar'
-              buttonStyle={{backgroundColor: '#111', borderRadius: 10, marginTop: 10}}
+              buttonStyle={{backgroundColor: '#aea3d6', borderRadius: 10, marginTop: 10}}
               titleStyle={styles.btn1Text}
               onPress={() => alert("Coming Soon!")}
             />
@@ -247,7 +247,6 @@ const styles = StyleSheet.create({
     color: colors.text,
   },
 
-
   background: {
     width: '100%',
     height: '100%',
@@ -261,8 +260,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: 'rgba(158, 138, 108, 1)',
     width: "80%"
-
-
   },
 
   btn2: {
