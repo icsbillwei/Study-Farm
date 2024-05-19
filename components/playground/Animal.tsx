@@ -12,6 +12,7 @@ import {
 import { Button } from "react-native-elements";
 import { colors } from "@/assets/color";
 import { AVPlaybackSource, Audio } from "expo-av";
+import { useGlobalState } from "../GlobalState";
 
 const NPC: React.FC<NPCProps> = ({
   name,
@@ -24,6 +25,20 @@ const NPC: React.FC<NPCProps> = ({
   const [chatMessage, setChatMessage] = useState("");
 
   const sound = useRef<Audio.Sound | null>(null);
+  const {tasks} = useGlobalState();
+  const percentageDone = tasks.filter(task => task.done).length / tasks.length;
+  let imageIndex: 0 | 1 | 2; // 1 is angry
+  if (percentageDone > 0.8) {
+    imageIndex = 2;
+  }
+  else if (percentageDone > 0.3) {
+    imageIndex = 0;
+  }
+  else {
+    imageIndex = 1;
+  }
+
+
   const playSound = async (soundUrl: AVPlaybackSource) => {
     try {
       if (sound.current) {
@@ -78,7 +93,7 @@ const NPC: React.FC<NPCProps> = ({
           >
             {name}
           </Text>
-          <Image source={iconUrl} style={{...styles.outsideAnimal, height: name.toLocaleLowerCase().includes("goose") ? 55 : 80}}></Image>
+          <Image source={iconUrl[imageIndex]} style={{...styles.outsideAnimal, height: name.toLocaleLowerCase().includes("goose") ? 55 : 80}}></Image>
         </View>
       </TouchableOpacity>
 
@@ -103,7 +118,7 @@ const NPC: React.FC<NPCProps> = ({
               borderRadius: 10,
             }}
           >
-            <Image source={iconUrl} height={300} width={300}></Image>
+            <Image source={iconUrl[imageIndex]} height={300} width={300}></Image>
             <View
               style={{
                 padding: 12,
@@ -196,7 +211,6 @@ const styles = StyleSheet.create({
   },
 
   outsideAnimal: {
-    height: 80,
     objectFit: "contain",
   },
 
