@@ -23,3 +23,7 @@ Welcome to **Study-Farm**, a gamified study app designed to transform your study
 ![App Snapshot 2](https://github.com/icsbillwei/Study-Farm/blob/main/assets/images/app-demo.png)
 ![App Snapshot 1](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnpoY2hnNGRpeDg5OXVzZHQ3MHprZW91OWs3ajNvcnZpMTVpZ2VteiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Op3J2EwDJu6xeArQGt/giphy.gif "App Snapshot 1")
 
+
+## Credits
+Background assets: Sprout Lands asset pack
+https://cupnooble.itch.io/sprout-lands-asset-pack
