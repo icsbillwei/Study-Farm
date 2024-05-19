@@ -5,6 +5,7 @@ export interface TimelineObject {
   name: string;
   percentage: number;
   dueDate: Date;
+  done: boolean;
 }
 
 export interface User {
@@ -20,17 +21,18 @@ interface GlobalState {
   clearTasks: () => void;
   setUser: (user: User) => void;
   clearUser: () => void;
+  toggleDone: (taskId: number) => void;
 }
 
 const GlobalStateContext = createContext<GlobalState | undefined>(undefined);
 
 export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [tasks, setTasks] = useState<TimelineObject[]>([
-    { id: 1, name: 'Intro Quiz', percentage: 5, dueDate: new Date(2024, 4, 17) },
-    { id: 2, name: 'Assignment 1', percentage: 5, dueDate: new Date(2024, 4, 18) },
-    { id: 3, name: 'Quiz 1', percentage: 20, dueDate: new Date(2024, 4, 19) },
-    { id: 4, name: 'Assignment 2', percentage: 5, dueDate: new Date(2024, 4, 20) },
-    { id: 5, name: '💀 Exam', percentage: 60, dueDate: new Date(2024, 4, 25) },
+    { id: 1, name: 'Intro Quiz', percentage: 5, dueDate: new Date(2024, 4, 17), done: false},
+    { id: 2, name: 'Assignment 1', percentage: 5, dueDate: new Date(2024, 4, 18), done: false },
+    { id: 3, name: 'Quiz 1', percentage: 20, dueDate: new Date(2024, 4, 19), done: false },
+    { id: 4, name: 'Assignment 2', percentage: 5, dueDate: new Date(2024, 4, 20), done: false },
+    { id: 5, name: '💀 Exam', percentage: 60, dueDate: new Date(2024, 4, 25), done: false },
   ]);
   const [user, setUser] = useState<User | null>(null);
 
@@ -50,8 +52,16 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
   };
 
+  const toggleDone = (taskId: number) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskId ? { ...task, done: !task.done } : task
+      )
+    );
+  };
+
   return (
-    <GlobalStateContext.Provider value={{ tasks, user, addTask, removeTask, clearTasks, setUser, clearUser }}>
+    <GlobalStateContext.Provider value={{ tasks, user, addTask, removeTask, clearTasks, setUser, clearUser, toggleDone }}>
       {children}
     </GlobalStateContext.Provider>
   );

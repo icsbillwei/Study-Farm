@@ -26,7 +26,8 @@ export default function SetTimelinePage() {
       id: Math.random() * 10000,
       name: taskName,
       percentage: percentage,
-      dueDate: new Date(new Date().getFullYear(), month - 1, day) // month is 0-indexed    
+      dueDate: new Date(new Date().getFullYear(), month - 1, day), // month is 0-indexed 
+      done: false,   
     };
     // setTasks([...tasks, newTask])
     addTask(newTask); // <-- Add task to global state;
@@ -44,10 +45,6 @@ export default function SetTimelinePage() {
     router.dismiss();
   };
 
-
-  const onDone = () => {
-
-  }
 
   return (
     <ImageBackground source={require('../../assets/images/farm.png')} style={styles.background}>
@@ -130,7 +127,7 @@ export default function SetTimelinePage() {
           <View>
           <Button
               title='Import from Calendar'
-              buttonStyle={{backgroundColor: '#111', borderRadius: 10, marginTop: 10}}
+              buttonStyle={{backgroundColor: '#aea3d6', borderRadius: 10, marginTop: 10}}
               titleStyle={styles.btn1Text}
               onPress={() => alert("Coming Soon!")}
             />
@@ -250,7 +247,6 @@ const styles = StyleSheet.create({
     color: colors.text,
   },
 
-
   background: {
     width: '100%',
     height: '100%',
@@ -264,8 +260,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: 'rgba(158, 138, 108, 1)',
     width: "80%"
-
-
   },
 
   btn2: {
