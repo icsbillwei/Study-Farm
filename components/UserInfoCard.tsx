@@ -1,7 +1,22 @@
-import React from "react";
-import { StyleSheet, View, Text, Image, ImageBackground } from "react-native";
+import React, { useRef } from "react";
+import { StyleSheet, View, Text, Image, ImageBackground, TouchableOpacity } from "react-native";
+import { Audio } from 'expo-av';
 
 const UserInfoCard: React.FC = () => {
+  const sound = useRef<Audio.Sound | null>(null);
+
+  const playSound = async () => {
+    try {
+      const { sound: soundObject } = await Audio.Sound.createAsync(
+        require('../assets/Audio/moo.wav')
+      );
+      sound.current = soundObject;
+      await sound.current.playAsync();
+    } catch (error) {
+      console.error('Error loading or playing sound:', error);
+    }
+  };
+
   return (
     <ImageBackground
       source={require("../assets/images/UserInfo-BG.png")}
@@ -9,7 +24,12 @@ const UserInfoCard: React.FC = () => {
     >
       <View style={styles.profile}>
         <View style={styles.avatar}>
-          <Image source={require("../assets/images/ProfilePic.png")}></Image>
+
+          <TouchableOpacity onPress={playSound}>
+            <Image source={require("../assets/images/ProfilePic.png")}
+            style={styles.profilePic}/>
+          </TouchableOpacity>
+
           <Text style={styles.level}>LV 4</Text>
         </View>
 
@@ -38,6 +58,10 @@ const styles = StyleSheet.create({
     color: '#8C2C0D',
   },
 
+  profilePic: {
+
+  },
+
   avatar: {
     display: "flex",
     alignItems: "center",
@@ -62,5 +86,5 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     paddingTop:30,
-  }
+  },
 });

@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
   btnText4: {
     fontSize: 16,
     marginRight: 0,
+    marginTop: 8
   },
 
   btnTextMain: {

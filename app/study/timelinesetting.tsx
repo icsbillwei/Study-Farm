@@ -8,7 +8,7 @@ import { useRouter } from 'expo-router';
 
 
 export default function SetTimelinePage() {
-    
+
   const [className, setClassName] = useState('');
   const [taskName, setTaskName] = useState('');
   const [percentage, setTaskPercent] = useState(Number(0));
@@ -21,7 +21,7 @@ export default function SetTimelinePage() {
   const onAddTask = () => {
     // Add task to the list
     const newTask: TimelineObject = {
-      id: Math.random() * 10000, 
+      id: Math.random() * 10000,
       name: taskName,
       percentage: percentage,
       dueDate: new Date(new Date().getFullYear(), month - 1, day) // month is 0-indexed    
@@ -37,9 +37,9 @@ export default function SetTimelinePage() {
 
   const router = useRouter();
 
-    const handleDismiss = () => {
-      router.dismiss();
-    };
+  const handleDismiss = () => {
+    router.dismiss();
+  };
 
 
   const onDone = () => {
@@ -48,7 +48,7 @@ export default function SetTimelinePage() {
 
   return (
     <ImageBackground source={require('../../assets/images/farm.png')} style={styles.background}>
-        <SafeAreaView style={styles.container}>
+      <View style={styles.containerShit}>
 
         <View style={styles.titleRow}>
           <TouchableOpacity onPress={() => handleDismiss()}>
@@ -56,98 +56,98 @@ export default function SetTimelinePage() {
           </TouchableOpacity>
           <Text style={styles.title}>Add Class</Text>
           <Button
-                title='Done'
-                buttonStyle={[styles.btn1, styles.btn3]}
-                titleStyle={styles.btn1Text}
-                onPress={onDone}
-            />
+            title='Done'
+            buttonStyle={[styles.btn1, styles.btn3]}
+            titleStyle={styles.btn1Text}
+            onPress={onDone}
+          />
         </View>
-        
-        <View style={{ height: 10 }} /> 
+
+        <View style={{ height: 10 }} />
 
         <TextInput
-            style={styles.input}
-            onChangeText={text => setClassName(text)}
-            value={className !== '' ? className : undefined}
-            placeholder='Class Name'
-            placeholderTextColor={colors.textGold}
+          style={styles.input}
+          onChangeText={text => setClassName(text)}
+          value={className !== '' ? className : undefined}
+          placeholder='Class Name'
+          placeholderTextColor={colors.textGold}
         />
 
-        <View style={{ height: 20 }} /> 
+        <View style={{ height: 20 }} />
 
         <View style={styles.taskContainer}>
           <TextInput
-              style={styles.input}
-              onChangeText={text => setTaskName(text)}
-              value={taskName}
-              placeholder='Task Name'
-              placeholderTextColor={colors.textGold}
+            style={styles.input}
+            onChangeText={text => setTaskName(text)}
+            value={taskName}
+            placeholder='Task Name'
+            placeholderTextColor={colors.textGold}
           />
           <Text style={styles.subText}>
             Is it an assignment, quiz, test or others?
           </Text>
           <TextInput
-              style={styles.input}
-              onChangeText={text => setTaskPercent(Number(text))}
-              value={percentage !== 0 ? percentage.toString() : undefined}
-              placeholder='Weighting'
-              placeholderTextColor={colors.textGold}
-              keyboardType='numeric'
+            style={styles.input}
+            onChangeText={text => setTaskPercent(Number(text))}
+            value={percentage !== 0 ? percentage.toString() : undefined}
+            placeholder='Weighting (%)'
+            placeholderTextColor={colors.textGold}
+            keyboardType='numeric'
           />
 
           {/* Set date */}
           <View style={styles.addDateContainer}>
-              <TextInput
-                  style={styles.inputTime}
-                  onChangeText={text => setMonth(Number(text))}
-                  placeholder='Month'
-                  value={month !== 0 ? month.toString() : undefined}
-                  placeholderTextColor={colors.textGold}
-                  keyboardType='numeric'
-              />
-              <TextInput
-                  style={styles.inputTime}
-                  onChangeText={text => setDay(Number(text))}
-                  placeholder='Day'
-                  value={day !== 1 ? day.toString() : undefined}
-                  placeholderTextColor={colors.textGold}
-                  keyboardType='numeric'
-              />
+            <TextInput
+              style={styles.inputTime}
+              onChangeText={text => setMonth(Number(text))}
+              placeholder='Month'
+              value={month !== 0 ? month.toString() : undefined}
+              placeholderTextColor={colors.textGold}
+              keyboardType='numeric'
+            />
+            <TextInput
+              style={styles.inputTime}
+              onChangeText={text => setDay(Number(text))}
+              placeholder='Day'
+              value={day !== 1 ? day.toString() : undefined}
+              placeholderTextColor={colors.textGold}
+              keyboardType='numeric'
+            />
           </View>
 
           <View style={styles.buttonRow}>
             <Button
-                title='Add Task'
-                buttonStyle={styles.btn1}
-                titleStyle={styles.btn1Text}
-                onPress={onAddTask}
+              title='Add Task'
+              buttonStyle={styles.btn1}
+              titleStyle={styles.btn1Text}
+              onPress={onAddTask}
             />
             <Button
-                title='Clear Tasks'
-                buttonStyle={[styles.btn1, styles.btn2]}
-                titleStyle={styles.btn1Text}
-                onPress={() => setTasks([])}
+              title='Clear Tasks'
+              buttonStyle={[styles.btn1, styles.btn2]}
+              titleStyle={styles.btn1Text}
+              onPress={() => setTasks([])}
             />
-        </View>
+          </View>
 
         </View>
-        
-        <ScrollView 
-        style={styles.addedContainer}
-        contentContainerStyle={{justifyContent: 'flex-start', alignItems: 'center' }}
+
+        <ScrollView
+          style={styles.addedContainer}
+          contentContainerStyle={{ justifyContent: 'flex-start', alignItems: 'center' }}
         >
 
           <Text style={styles.subtitle}>
-              Added Tasks
+            Added Tasks
           </Text>
 
           {tasks.map((task) => (
             <TimelineItem key={task.id} item={task} />
           ))}
-          
+
         </ScrollView>
 
-        </SafeAreaView>
+      </View>
     </ImageBackground>
   );
 }
@@ -159,12 +159,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
-  container: {
+  containerShit: {
+    position: 'absolute',
     backgroundColor: 'rgba(95, 99, 79, 0.2)',
     height: '90%',
     width: '90%',
     paddingHorizontal: 30,
     paddingVertical: 20,
+    marginHorizontal: 0,
     borderRadius: 10,
   },
 
@@ -174,6 +176,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 40,
     paddingVertical: 35,
+    marginHorizontal: 10,
+
+    shadowColor: 'black',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   },
 
   addedContainer: {
@@ -189,6 +197,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 0,
+    marginLeft: 10,
   },
 
   backButton: {
@@ -225,6 +234,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Handjet-Bold',
     fontSize: 20,
     marginVertical: 3,
+    marginRight: 15,
     color: colors.text,
   },
 
@@ -248,6 +258,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 0,
     marginTop: 20,
     backgroundColor: 'rgba(158, 138, 108, 1)',
+
+    
   },
 
   btn2: {
