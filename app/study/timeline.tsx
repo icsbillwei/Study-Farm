@@ -1,9 +1,10 @@
 import React from 'react';
 import { Image, Text, View, TouchableOpacity, ImageBackground, ScrollView, StyleSheet } from 'react-native';
-import TimelineObject from '../../components/TimelineSchema';
+import {TimelineObject, useGlobalState} from '../../components/TimelineSchema';
 import TimelineItem from '../../components/TimelineItem';
 import { colors } from '@/assets/color';
 import { useRouter } from 'expo-router';
+import { TasksContext } from '@/components/TasksContext';
 
 const TimelineView = () => {
   const router = useRouter();
@@ -11,12 +12,9 @@ const TimelineView = () => {
   const handleDismiss = () => {
     router.dismiss();
   };
-  const items: TimelineObject[] = [
-    { id: 1, name: 'Touch Fish 1', percentage: 5, dueDate: new Date(2024, 4, 17) },
-    { id: 2, name: 'Touch Fish 2', percentage: 15, dueDate: new Date(2024, 4, 18) },
-    { id: 3, name: 'Touch Fish 3', percentage: 35, dueDate: new Date(2024, 4, 19) },
 
-  ];
+  const { tasks } = useGlobalState(); // <-- Use global state to get tasks
+
 
   return (
     <ImageBackground
@@ -33,7 +31,7 @@ const TimelineView = () => {
           <Text style={styles.title}>Timeline</Text>
         </View>
 
-        {items.map((item, index) => (
+        {tasks.map((item, index) => (
           <TimelineItem key={index} item={item} />
         ))}
       </ScrollView>
