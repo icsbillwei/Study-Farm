@@ -3,6 +3,7 @@ import { colors } from "@/assets/color";
 import { Link } from "expo-router";
 import { View, Text, StyleSheet, ImageBackground, ScrollView } from "react-native";
 import UserInfoCard from "@/components/UserInfoCard";
+import { useState } from "react";
 
 export default function StudyScreen() {
 
@@ -10,7 +11,6 @@ export default function StudyScreen() {
   const line2 = "a pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit,";
   const line3 = "lorem ipsum dolor sit amet, consectetur adipiscing elit, a pariatur. lorem lorem lorem ipsum asdasdas fish TOUCH FISH";
 
-  
 
   return <ImageBackground source={require('../assets/images/farm.png') }>
     <View style={styles.container}>

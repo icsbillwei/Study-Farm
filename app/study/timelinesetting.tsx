@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, TouchableOpacity, TextInput, View, Text, StyleSheet, SafeAreaView, ImageBackground, Image } from 'react-native';
 import { Button } from 'react-native-elements';
-import TimelineObject from '../../components/TimelineSchema';
+import {TimelineObject, useGlobalState} from '../../components/TimelineSchema';
 import TimelineItem from '../../components/TimelineItem';
 import { colors } from '../../assets/color';
 import { useRouter } from 'expo-router';
@@ -16,7 +16,9 @@ export default function SetTimelinePage() {
   const [day, setDay] = useState(Number(1));
 
   // Task list
-  const [tasks, setTasks] = useState<TimelineObject[]>([]);
+  // const [tasks, setTasks] = useState<TimelineObject[]>([]);
+  const { tasks, addTask, removeTask, clearTasks } = useGlobalState(); // <-- Use global state
+
 
   const onAddTask = () => {
     // Add task to the list
@@ -26,7 +28,8 @@ export default function SetTimelinePage() {
       percentage: percentage,
       dueDate: new Date(new Date().getFullYear(), month - 1, day) // month is 0-indexed    
     };
-    setTasks([...tasks, newTask]);
+    // setTasks([...tasks, newTask])
+    addTask(newTask); // <-- Add task to global state;
 
     // Clear the input fields
     setTaskName('');
@@ -55,12 +58,7 @@ export default function SetTimelinePage() {
             <Image source={require('../../assets/images/pixel-arrow.png')} style={styles.backButton} />
           </TouchableOpacity>
           <Text style={styles.title}>Add Class</Text>
-          <Button
-            title='Done'
-            buttonStyle={[styles.btn1, styles.btn3]}
-            titleStyle={styles.btn1Text}
-            onPress={onDone}
-          />
+          
         </View>
 
         <View style={{ height: 10 }} />
@@ -126,7 +124,7 @@ export default function SetTimelinePage() {
               title='Clear Tasks'
               buttonStyle={[styles.btn1, styles.btn2]}
               titleStyle={styles.btn1Text}
-              onPress={() => setTasks([])}
+              onPress={clearTasks}
             />
           </View>
 
