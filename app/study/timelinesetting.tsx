@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, TouchableOpacity, TextInput, View, Text, StyleSheet, SafeAreaView, ImageBackground, Image } from 'react-native';
 import { Button } from 'react-native-elements';
-import {TimelineObject, useGlobalState} from '../../components/TimelineSchema';
+import { TimelineObject, useGlobalState } from '../../components/TimelineSchema';
 import TimelineItem from '../../components/TimelineItem';
 import { colors } from '../../assets/color';
 import { useRouter } from 'expo-router';
@@ -55,7 +55,7 @@ export default function SetTimelinePage() {
             <Image source={require('../../assets/images/pixel-arrow.png')} style={styles.backButton} />
           </TouchableOpacity>
           <Text style={styles.title}>Add Class</Text>
-          
+
         </View>
 
         <View style={{ height: 10 }} />
@@ -124,18 +124,26 @@ export default function SetTimelinePage() {
               onPress={clearTasks}
             />
           </View>
+          <View>
+          <Button
+              title='Import from Calendar'
+              buttonStyle={{backgroundColor: '#111', borderRadius: 10, marginTop: 10}}
+              titleStyle={styles.btn1Text}
+              onPress={() => alert("Coming Soon!")}
+            />
+          </View>
 
         </View>
 
         <ScrollView
           style={styles.addedContainer}
-          contentContainerStyle={{ justifyContent: 'flex-start', alignItems: 'center' }}
+          contentContainerStyle={{ justifyContent: 'flex-start', alignItems: 'flex-start' }}
         >
 
           <Text style={styles.subtitle}>
             Added Tasks
           </Text>
-
+          
           {tasks.map((task) => (
             <TimelineItem key={task.id} item={task} />
           ))}
@@ -169,19 +177,18 @@ const styles = StyleSheet.create({
     backgroundColor: colors.backgroundGreen,
     elevation: 10,
     borderRadius: 10,
-    paddingHorizontal: 40,
+    paddingHorizontal: 25,
     paddingVertical: 35,
-    marginHorizontal: 10,
+    marginHorizontal: 3,
 
     shadowColor: 'black',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 2,
   },
 
   addedContainer: {
     marginTop: 10,
-
   },
 
   addDateContainer: {
@@ -253,8 +260,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 0,
     marginTop: 20,
     backgroundColor: 'rgba(158, 138, 108, 1)',
+    width: "80%"
 
-    
+
   },
 
   btn2: {
