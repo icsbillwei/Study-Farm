@@ -19,6 +19,7 @@ Welcome to **Study-Farm**, a gamified study app designed to transform your study
 - **Reward System:** Earn rewards based on your study habits. The attitude of characters and visual rewards on your profile will change according to your performance. 🏆
 - **Timeline as Game Map:** Your schedule is displayed as a game map, making it fun and easy to visualize your progress. 🗺️
 
-![App Snapshot 1](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnpoY2hnNGRpeDg5OXVzZHQ3MHprZW91OWs3ajNvcnZpMTVpZ2VteiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Op3J2EwDJu6xeArQGt/giphy.gif "App Snapshot 1")
+
 ![App Snapshot 2](https://github.com/icsbillwei/Study-Farm/blob/main/assets/images/app-demo.png)
+![App Snapshot 1](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnpoY2hnNGRpeDg5OXVzZHQ3MHprZW91OWs3ajNvcnZpMTVpZ2VteiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Op3J2EwDJu6xeArQGt/giphy.gif "App Snapshot 1")
 
