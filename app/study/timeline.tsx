@@ -47,14 +47,14 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: 'white',
     marginBottom: 15,
-    marginLeft: 30,
+    marginLeft: 20,
   },
 
   backButton: {
     width: 35,
     height: 35,
     marginBottom: 10,
-    marginLeft: 40,
+    marginLeft: 10,
     marginRight: 0,
   },
 
@@ -74,9 +74,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'rgba(95, 99, 79, 0.2)',
     marginVertical: 50,
-    width: '80%',
+    width: '90%',
     paddingVertical: 30,
-    paddingHorizontal: 35,
+    paddingHorizontal: 25,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.9,

@@ -13,7 +13,10 @@ import {
 import { Button } from "react-native-elements";
 import { colors } from "@/assets/color";
 import { AVPlaybackSource, Audio } from "expo-av";
+import TypeWriter from 'react-native-typewriter';
 
+
+const promptBegin = "You are an NPC in a mobile study app. Write a 3 sentence max (could be shorter) thing that this game character would say when provided some status about this character. Exaggerate your personality."
 const NPC: React.FC<NPCProps> = ({
   name,
   iconUrl,
@@ -23,6 +26,7 @@ const NPC: React.FC<NPCProps> = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [chatMessage, setChatMessage] = useState("");
+  const [response, setResponse] = useState("");
 
   const sound = useRef<Audio.Sound | null>(null);
   const playSound = async (soundUrl: AVPlaybackSource) => {
@@ -47,10 +51,31 @@ const NPC: React.FC<NPCProps> = ({
     setChatMessage(text);
   };
 
-  const handleChatSubmit = () => {
+  const handleChatSubmit = async () => {
     // Handle chat submission logic here
     // You can use the chatMessage state to access the typed message
     // and perform any necessary actions
+    setResponse(`${name} is thinking...`);
+
+    try {
+      const response = await fetch("http://172.20.10.5:3033/npc", { //// change to your own IP address!!!!!!!
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          character: name,
+          prompt: promptBegin + chatMessage,
+          personality: personality,
+        }),
+      });
+      const data = await response.json();
+      console.log("DATA:", data);
+      setResponse(data.message.content);
+    } catch (error) {
+      console.error("Error submitting chat:", error);
+    }
+
     setChatMessage("");
   };
 
@@ -67,7 +92,7 @@ const NPC: React.FC<NPCProps> = ({
         ...styles.container,
       }}
     >
-      
+
 
       <TouchableOpacity onPress={handleAnimalClick}>
         <View style={{ alignItems: "center" }}>
@@ -81,7 +106,7 @@ const NPC: React.FC<NPCProps> = ({
           >
             {name}
           </Text>
-          <Image source={iconUrl} style={{...styles.outsideAnimal, height: name.toLocaleLowerCase().includes("goose") ? 55 : 80}}></Image>
+          <Image source={iconUrl} style={{ ...styles.outsideAnimal, height: name.toLocaleLowerCase().includes("goose") ? 55 : 80 }}></Image>
         </View>
       </TouchableOpacity>
 
@@ -106,10 +131,51 @@ const NPC: React.FC<NPCProps> = ({
               borderRadius: 10,
             }}
           >
+            
             <TouchableOpacity onPress={handleGoBack} >
-              <Image source={require('../../assets/images/pixel-arrow-black.png')} style={styles.backButton}  />
+              <Image source={require('../../assets/images/pixel-arrow-black.png')} style={styles.backButton} />
             </TouchableOpacity >
             <Image source={iconUrl} height={300} width={300}></Image>
+
+            
+
+            <TextInput
+              value={chatMessage}
+              onChangeText={handleChatInputChange}
+              placeholder="Type your message..."
+              style={{
+                backgroundColor: "#fff",
+                fontFamily: "Handjet-Regular",
+                fontSize: 16,
+                padding: 10,
+                margin: 5,
+                borderRadius: 5,
+                height: 50,
+                color: "black",
+              }}
+            />
+
+          <View style={{ height: 5 }} />
+
+          {/* prompt is here */}
+          <ImageBackground source={require('../../assets/images/woodboard-long.png')} style={styles.woodboard} imageStyle={{ borderRadius: 10 }}>
+            <Text
+              style={{
+                fontFamily: "Handjet-Bold",
+                color: "white",
+                fontSize: 16,
+              }}
+            >
+              {name} says:
+            </Text>
+            <View style={{ height: 10 }} />
+            <TypeWriter typing={1} maxDelay={1} style={{ fontFamily: "Handjet-Medium", color: "white" }}>
+              {response || "Hello there!"}
+            </TypeWriter>
+          </ImageBackground>
+
+            <View style={{ height: 10 }} />
+
             <View
               style={{
                 padding: 12,
@@ -132,42 +198,10 @@ const NPC: React.FC<NPCProps> = ({
               </Text>
             </View>
 
+            
             <View style={{ height: 10 }} />
 
-            {/* prompt is here */}
-            <ImageBackground source={require('../../assets/images/woodboard-long.png')} style={styles.woodboard} imageStyle={{ borderRadius: 10}}>
-              <Text
-                style={{
-                  fontFamily: "Handjet-Bold",
-                  color: "white",
-                  fontSize: 16,
-                }}
-              >
-                {name} says:
-              </Text>
-              <View style={{ height: 10 }} />
-              <Text style={{ fontFamily: "Handjet-Medium", color: "white" }}>
-                adsad adasduad as da sa sda sd asd sd asd dsa ads asd ads adsad{" "}
-              </Text>
-            </ImageBackground>
-
-            <View style={{ height: 10 }} />
-
-            <TextInput
-              value={chatMessage}
-              onChangeText={handleChatInputChange}
-              placeholder="Type your message..."
-              style={{
-                backgroundColor: "#fff",
-                fontFamily: "Handjet-Regular",
-                fontSize: 16,
-                padding: 10,
-                margin: 5,
-                borderRadius: 5,
-                height: 50,
-                color: "black",
-              }}
-            />
+            
 
             <Text onPress={handleChatSubmit} style={styles.button}>
               Ask {name}

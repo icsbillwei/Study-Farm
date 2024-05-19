@@ -3,15 +3,59 @@ import { colors } from "@/assets/color";
 import { Link } from "expo-router";
 import { View, Text, StyleSheet, ImageBackground, ScrollView } from "react-native";
 import UserInfoCard from "@/components/UserInfoCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useGlobalState } from "@/components/GlobalState";
 
 export default function StudyScreen() {
 
   
-  const line1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit,a pariatur.";
-  const line2 = "a pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit,";
-  const line3 = "lorem ipsum dolor sit amet, consectetur adipiscing elit, a pariatur. lorem lorem lorem ipsum asdasdas fish TOUCH FISH";
+  const line1 = "Get Quiz 1 done today!";
+  const line2 = "Work on Assignment 2 and start studying for the midterm";
+  const line3 = "If you have time start early for the Assignment 3";
+
+  const {getString} = useGlobalState();
+
+  // const [line1, setLine1] = useState("");
+  // const [line2, setLine2] = useState("");
+  // const [line3, setLine3] = useState("");
+
+
+  // const summaryFunctionCall = async (str1: string, str2: string, str3: string) => {
+  //   setLine1(str1);
+  //   setLine2(str2);
+  //   setLine3(str3);
+  // }
+
+  // const handleSummary = async () => {
+  //   console.log("Handling summary...");
+  //   // Handle chat submission logic here
+  //   // You can use the chatMessage state to access the typed message
+  //   // and perform any necessary actions
+  //   setLine1("Loading...");
+
+  //   try {
+  //     console.log("Fetching chat...");
+  //     const response = await fetch("http://172.20.10.5:3033/tasks/conversation", { //// change to your own IP address!!!!!!!
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         userInfo: getString(), 
+  //         today: new Date().toISOString(),
+  //       }),
+  //     });
+  //     const data = await response.json();
+  //     console.log("DATA:", data);
+  //     summaryFunctionCall(data.message.content.str1, data.message.content.str2, data.message.content.str3);
+  //   } catch (error) {
+  //     console.error("Error submitting summary:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   handleSummary();
+  // }, []);
 
 
   return <ImageBackground source={require('../assets/images/farm.png') }>
@@ -109,6 +153,8 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     alignItems: 'flex-start',
     flexDirection: 'column',
+
+    overflow: 'hidden',
   },
 
   btnText: {
@@ -137,12 +183,13 @@ const styles = StyleSheet.create({
 
   btnTextMain: {
     fontSize: 20,
-    marginRight: 0,
+    marginRight: 60,
     fontFamily: 'Handjet-Medium',
+    overflow: 'hidden',
   },
 
   star: {
-    fontSize: 16,
+    fontSize: 10,
     marginRight: 10,
   },
 

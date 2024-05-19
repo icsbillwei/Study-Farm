@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`HawkHacks app listening at http://localhost:${port}`);
 });
 

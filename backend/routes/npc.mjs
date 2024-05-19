@@ -20,14 +20,16 @@ router.post("/", async function (req, res, next) {
     messages: [
       {
         role: "system",
-        content: `Your name is ${character}. ${prompt}. This is their personality: ${personality}`,
+        content: `Your name is ${character}. This is their personality: ${personality}`,
       },
-      { role: "user", content: "It's final week. User's name is Benny" },
+      { role: "user", content: prompt},
     ],
   });
 
-  console.log(response.choices[0]);
-  res.send(response);
+  console.log("SYSTEM: ", `Your name is ${character}. This is their personality: ${personality}`)
+
+  console.log('USER: ', prompt);
+  res.send(response.choices[0]);
 });
 
 export default router;
