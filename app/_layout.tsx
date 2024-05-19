@@ -1,4 +1,4 @@
-import { GlobalStateProvider } from "@/components/TimelineSchema";
+import { GlobalStateProvider } from "@/components/GlobalState";
 import { Stack } from "expo-router";
 
 

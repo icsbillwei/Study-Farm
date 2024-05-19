@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, Text, View, TouchableOpacity, ImageBackground, ScrollView, StyleSheet } from 'react-native';
-import {TimelineObject, useGlobalState} from '../../components/TimelineSchema';
+import {TimelineObject, useGlobalState} from '../../components/GlobalState';
 import TimelineItem from '../../components/TimelineItem';
 import { colors } from '@/assets/color';
 import { useRouter } from 'expo-router';

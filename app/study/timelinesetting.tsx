@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, TouchableOpacity, TextInput, View, Text, StyleSheet, SafeAreaView, ImageBackground, Image } from 'react-native';
 import { Button } from 'react-native-elements';
-import { TimelineObject, useGlobalState } from '../../components/TimelineSchema';
+import { TimelineObject, useGlobalState } from '../../components/GlobalState';
 import TimelineItem from '../../components/TimelineItem';
 import { colors } from '../../assets/color';
 import { useRouter } from 'expo-router';

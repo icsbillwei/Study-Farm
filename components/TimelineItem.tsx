@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
-import { TimelineObject, useGlobalState } from './TimelineSchema';
+import { TimelineObject, useGlobalState } from './GlobalState';
 import { colors } from '@/assets/color';
 
 const low: number = 10;

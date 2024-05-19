@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import { StyleSheet, View, Text, Image, ImageBackground, TouchableOpacity } from "react-native";
 import { Audio } from 'expo-av';
+import { useGlobalState } from "./GlobalState";
 
 const UserInfoCard: React.FC = () => {
+  const {user} = useGlobalState();
   const sound = useRef<Audio.Sound | null>(null);
 
   const playSound = async () => {
@@ -34,7 +36,7 @@ const UserInfoCard: React.FC = () => {
         </View>
 
         <View style={styles.info}>
-          <Text style={styles.name}> HawkHacks</Text>
+          <Text style={styles.name}> {user?.username}</Text>
           <Image source={require("../assets/images/fruits.png")}></Image>
           <Image source={require("../assets/images/UserBar.png")}></Image>
         </View>
