@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     },
 
     date: {
-        fontSize: 24,
+        fontSize: 20,
         fontFamily: 'Handjet-Medium',
         color: 'white'
     },
