@@ -15,19 +15,19 @@ const npcs: NPCProps[] = [
     name: "Bessie the Cow",
     iconUrl: require("../assets/images/newcow.png"),
     personality: "Calm and Nurturing: Bessie is the embodiment of patience and tranquility. She takes a nurturing approach, providing gentle encouragement and support. ",
-    coordinates: { x: 25, y: 140 }
+    coordinates: { x: -35, y: 140 }
   },
   {
     name: "Talon the Hawk",
     iconUrl: require("../assets/images/newbird.png"),
     personality: "mysterious",
-    coordinates: { x: 270, y: 500 }
+    coordinates: { x: 260, y: 460 }
   },
   {
     name: "Gabby the Goose",
     iconUrl: require("../assets/images/newgoose.png"),
     personality: "chatty",
-    coordinates: { x: 130, y: 420 }
+    coordinates: { x: 150, y: 390 }
   }
 ];
 
