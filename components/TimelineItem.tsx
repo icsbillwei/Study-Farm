@@ -63,14 +63,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginVertical: 6,
-        marginHorizontal: 20
     },
 
     container: {
         marginRight: 20,
         marginLeft: 10,
         paddingHorizontal: 20,
-        width: 200,
+        width: 160,
         margin: 0,
         shadowColor: colors.textGrey,
         shadowOffset: {width: 0, height: 2},
@@ -98,15 +97,15 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        fontSize: 24,
+        fontSize: 22,
         fontFamily: 'Handjet-Bold',
         color: 'white'
     },
 
     weighting: {
         fontSize: 20,
-        fontFamily: 'Handjet-Bold',
-        color: 'white'
+        fontFamily: 'Handjet-Regular',
+        color: 'black'
     },
 
     date: {

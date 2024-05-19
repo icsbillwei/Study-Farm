@@ -78,7 +78,7 @@ const NPC: React.FC<NPCProps> = ({
           >
             {name}
           </Text>
-          <Image source={iconUrl} style={styles.outsideAnimal}></Image>
+          <Image source={iconUrl} style={{...styles.outsideAnimal, height: name.toLocaleLowerCase().includes("goose") ? 55 : 80}}></Image>
         </View>
       </TouchableOpacity>
 
@@ -122,7 +122,6 @@ const NPC: React.FC<NPCProps> = ({
               </Text>
               <View style={{ height: 10 }} />
               <Text style={{ fontFamily: "Handjet-Regular", color: "white" }}>
-                {" "}
                 {personality}
               </Text>
             </View>
@@ -151,7 +150,6 @@ const NPC: React.FC<NPCProps> = ({
               </Text>
               <View style={{ height: 10 }} />
               <Text style={{ fontFamily: "Handjet-Regular", color: "white" }}>
-                {" "}
                 adsad adasduad as da sa sda sd asd sd asd dsa ads asd ads adsad{" "}
               </Text>
             </View>
