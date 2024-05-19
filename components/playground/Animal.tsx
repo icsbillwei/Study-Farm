@@ -30,7 +30,7 @@ const NPC: React.FC<NPCProps> = ({
   const [response, setResponse] = useState("");
 
   const sound = useRef<Audio.Sound | null>(null);
-  const {tasks} = useGlobalState();
+  const { tasks } = useGlobalState();
   const percentageDone = tasks.filter(task => task.done).length / tasks.length;
   let imageIndex: 0 | 1 | 2; // 1 is angry
   if (percentageDone > 0.8) {
@@ -121,7 +121,7 @@ const NPC: React.FC<NPCProps> = ({
           >
             {name}
           </Text>
-          <Image source={iconUrl[imageIndex]} style={{...styles.outsideAnimal, height: name.toLocaleLowerCase().includes("goose") ? 55 : 80}}></Image>
+          <Image source={iconUrl[imageIndex]} style={{ ...styles.outsideAnimal, height: name.toLocaleLowerCase().includes("goose") ? 55 : 80 }}></Image>
         </View>
       </TouchableOpacity>
 
@@ -146,11 +146,47 @@ const NPC: React.FC<NPCProps> = ({
               borderRadius: 10,
             }}
           >
-            
+
             <TouchableOpacity onPress={handleGoBack} >
               <Image source={require('../../assets/images/pixel-arrow-black.png')} style={styles.backButton} />
             </TouchableOpacity >
             <Image source={iconUrl[imageIndex]} height={300} width={300}></Image>
+            <TextInput
+              value={chatMessage}
+              onChangeText={handleChatInputChange}
+              placeholder="Type your message..."
+              style={{
+                backgroundColor: "#fff",
+                fontFamily: "Handjet-Regular",
+                fontSize: 16,
+                padding: 10,
+                margin: 5,
+                borderRadius: 5,
+                height: 50,
+                color: "black",
+              }}
+            />
+
+            <View style={{ height: 5 }} />
+
+            {/* prompt is here */}
+            <ImageBackground source={require('../../assets/images/woodboard-long.png')} style={styles.woodboard} imageStyle={{ borderRadius: 10 }}>
+              <Text
+                style={{
+                  fontFamily: "Handjet-Bold",
+                  color: "white",
+                  fontSize: 16,
+                }}
+              >
+                {name} says:
+              </Text>
+              <View style={{ height: 10 }} />
+              <TypeWriter typing={1} maxDelay={1} style={{ fontFamily: "Handjet-Medium", color: "white" }}>
+                {response || "Hello there!"}
+              </TypeWriter>
+            </ImageBackground>
+
+            <View style={{ height: 10 }} />
             <View
               style={{
                 padding: 12,
@@ -173,10 +209,10 @@ const NPC: React.FC<NPCProps> = ({
               </Text>
             </View>
 
-            
+
             <View style={{ height: 10 }} />
 
-            
+
 
             <Text onPress={handleChatSubmit} style={styles.button}>
               Ask {name}

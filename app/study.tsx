@@ -154,7 +154,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexDirection: 'column',
 
-    overflow: 'hidden',
   },
 
   btnText: {
