@@ -26,7 +26,8 @@ export default function SetTimelinePage() {
       id: Math.random() * 10000,
       name: taskName,
       percentage: percentage,
-      dueDate: new Date(new Date().getFullYear(), month - 1, day) // month is 0-indexed    
+      dueDate: new Date(new Date().getFullYear(), month - 1, day), // month is 0-indexed 
+      done: false,   
     };
     // setTasks([...tasks, newTask])
     addTask(newTask); // <-- Add task to global state;
@@ -44,10 +45,6 @@ export default function SetTimelinePage() {
     router.dismiss();
   };
 
-
-  const onDone = () => {
-
-  }
 
   return (
     <ImageBackground source={require('../../assets/images/farm.png')} style={styles.background}>

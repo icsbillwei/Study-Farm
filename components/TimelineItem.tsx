@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
-import TimelineObject from './TimelineSchema';
+import { TimelineObject, useGlobalState } from './TimelineSchema';
 import { colors } from '@/assets/color';
 
 const low: number = 10;
@@ -13,7 +13,7 @@ interface TimelineItemProps {
 
 const TimelineItem = ({ item }: TimelineItemProps) => {
 
-
+    const {toggleDone} = useGlobalState();
     let p: number = item.percentage;
 
     const getStyle = () => {
@@ -24,8 +24,11 @@ const TimelineItem = ({ item }: TimelineItemProps) => {
 
     const getDateText = () => {
         let temp = new Date();
-        if (temp.setHours(0,0,0,0) > item.dueDate.setHours(0,0,0,0)) {
+        if (item.done) {
             return "Done";
+        }
+        else if (temp.setHours(0,0,0,0) > item.dueDate.setHours(0,0,0,0)) {
+            return "Overdue";
         }
         else if (temp.setHours(0,0,0,0) == item.dueDate.setHours(0,0,0,0)) {
             return "Today";
@@ -35,9 +38,12 @@ const TimelineItem = ({ item }: TimelineItemProps) => {
 
     const getDateStyle = () => {
         let temp = getDateText();
-        if (temp == "Done") {
+        if (item.done) {
             return styles.doneStyle;
         }
+        else if (temp == "Overdue") {
+            return styles.overdueStyle;
+        }   
         else if (temp == "Today") {
             return styles.todayStyle;
         }
@@ -45,14 +51,17 @@ const TimelineItem = ({ item }: TimelineItemProps) => {
     }
 
     return(
-        <View style={styles.itemContainer}>
-            <View style={[styles.container, getStyle()]}>
-                <Text style={styles.title}>{item.name}</Text>
-                <Text style={styles.weighting}>{item.percentage}%</Text>
+        <TouchableOpacity onPress={
+            () => toggleDone(item.id)
+        }>
+            <View style={styles.itemContainer}>
+                <View style={[styles.container, getStyle()]}>
+                    <Text style={styles.title}>{item.name}</Text>
+                    <Text style={styles.weighting}>{item.percentage}%</Text>
+                </View>
+                <Text style={[styles.date, getDateStyle()]}>{getDateText()}</Text>
             </View>
-            <Text style={[styles.date, getDateStyle()]}>{getDateText()}</Text>
-
-        </View>
+        </TouchableOpacity>
     )
 }
 
@@ -119,8 +128,12 @@ const styles = StyleSheet.create({
         color: '#8defba'
     },
 
-    todayStyle: {
+    overdueStyle: {
         color: '#ff8989'
+    },
+
+    todayStyle: {
+        color: '#FFD770'
     }
 })
 
